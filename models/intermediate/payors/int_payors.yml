@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: int_payors
+    description: "Conformed payor entity with plan and coverage metadata."
+    columns:
+      - name: payor_sk
+        description: "Surrogate key for the payor."
+        tests:
+          - not_null
+          - unique
+
+      - name: payor_id
+        description: "Natural payor identifier."
+        tests:
+          - not_null
+
+      - name: encounter_id
+        description: "Encounter associated with the payor."
+
+      - name: patient_id
+        description: "Patient associated with the payor."
+
+      - name: payor_name
+        description: "Name of the insurance payor."
+
+      - name: plan_name
+        description: "Name of the insurance plan."
+
+      - name: coverage_type
+        description: "Type of coverage."
+
+      - name: member_id
+        description: "Member identifier."
+
+      - name: group_number
+        description: "Group number for the insurance plan."
+
+      - name: effective_date
+        description: "Coverage effective date."
+
+      - name: termination_date
+        description: "Coverage termination date."
+
+      - name: created_at
+        description: "Record creation timestamp."
+
+      - name: updated_at
+        description: "Record last update timestamp."

@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: stg_dates
+    description: "Staging model for the enterprise date dimension sourced from the raw EHR date table."
+    columns:
+
+      - name: date_sk
+        description: "Surrogate key generated from date_day."
+        tests:
+          - not_null
+          - unique
+
+      - name: date_day
+        description: "Calendar date represented as a date field."
+        tests:
+          - not_null
+          - unique
+
+      - name: year
+        description: "Calendar year."
+
+      - name: quarter
+        description: "Calendar quarter (1–4)."
+
+      - name: month
+        description: "Calendar month number (1–12)."
+
+      - name: day
+        description: "Day of the month."
+
+      - name: day_of_week
+        description: "Day of the week number (1–7)."
+
+      - name: week_of_year
+        description: "ISO week number of the year."
+
+      - name: is_weekend
+        description: "Boolean flag indicating whether the date falls on a weekend."
+
+      - name: is_holiday
+        description: "Boolean flag indicating whether the date is a recognized holiday."
+
+      - name: holiday_name
+        description: "Name of the holiday, if applicable."
+
+      - name: created_at
+        description: "Timestamp when the date record was created in the source system."
+
+      - name: updated_at
+        description: "Timestamp when the date record was last updated in the source system."

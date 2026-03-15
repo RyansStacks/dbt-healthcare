@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: int_encounter_timelines
+    description: "Derived encounter timelines including length of stay metrics."
+    columns:
+      - name: encounter_sk
+        description: "Surrogate key for the encounter."
+        tests:
+          - not_null
+
+      - name: encounter_id
+        description: "Natural encounter identifier."
+        tests:
+          - not_null
+
+      - name: patient_id
+        description: "Identifier of the patient associated with the encounter."
+
+      - name: admit_datetime
+        description: "Admission timestamp."
+
+      - name: discharge_datetime
+        description: "Discharge timestamp."
+
+      - name: length_of_stay_hours
+        description: "Length of stay in hours."
+
+      - name: length_of_stay_days
+        description: "Length of stay in days."

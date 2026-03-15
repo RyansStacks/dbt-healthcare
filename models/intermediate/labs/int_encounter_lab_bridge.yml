@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: int_encounter_lab_bridge
+    description: "Bridge table linking lab test orders to lab results."
+    columns:
+      - name: encounter_lab_bridge_sk
+        description: "Surrogate key for the encounter-lab relationship."
+        tests:
+          - not_null
+          - unique
+
+      - name: encounter_lab_test_sk
+        description: "Surrogate key for the lab test order."
+
+      - name: lab_result_sk
+        description: "Surrogate key for the lab result."
+
+      - name: encounter_id
+        description: "Encounter identifier."
+
+      - name: patient_id
+        description: "Patient identifier."
+
+      - name: lab_test_id
+        description: "Identifier for the lab test."
+
+      - name: loinc_code
+        description: "LOINC code for the lab result."

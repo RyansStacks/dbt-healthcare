@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: int_lab_results
+    description: "Conformed lab result entity with LOINC coding and result metadata."
+    columns:
+      - name: lab_result_sk
+        description: "Surrogate key for the lab result."
+        tests:
+          - not_null
+          - unique
+
+      - name: lab_result_id
+        description: "Natural lab result identifier."
+        tests:
+          - not_null
+
+      - name: patient_id
+        description: "Patient associated with the lab result."
+
+      - name: encounter_id
+        description: "Encounter associated with the lab result."
+
+      - name: loinc_code
+        description: "LOINC code for the lab test."
+
+      - name: test_name
+        description: "Name of the lab test."
+
+      - name: result_value
+        description: "Numeric or text result value."
+
+      - name: result_unit
+        description: "Unit of measurement."
+
+      - name: reference_range_low
+        description: "Lower bound of normal range."
+
+      - name: reference_range_high
+        description: "Upper bound of normal range."
+
+      - name: abnormal_flag
+        description: "Indicates whether the result is abnormal."
+
+      - name: collected_datetime
+        description: "Timestamp when the sample was collected."
+
+      - name: resulted_datetime
+        description: "Timestamp when the result was finalized."
+
+      - name: created_at
+        description: "Record creation timestamp."
+
+      - name: updated_at
+        description: "Record last update timestamp."

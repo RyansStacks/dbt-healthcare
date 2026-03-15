@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: fct_encounter_diagnoses
+    description: "Encounter-diagnosis fact table with ICD metadata and diagnosis flags."
+    columns:
+      - name: encounter_diagnosis_bridge_sk
+        description: "Surrogate key for the encounter-diagnosis relationship."
+        tests:
+          - not_null
+          - unique
+
+      - name: diagnosis_sk
+        description: "Diagnosis surrogate key."
+
+      - name: encounter_id
+        description: "Encounter identifier."
+
+      - name: patient_id
+        description: "Patient identifier."
+
+      - name: icd_code
+        description: "ICD-10 code."
+
+      - name: diagnosis_type
+        description: "Diagnosis type."
+
+      - name: is_primary_diagnosis
+        description: "Primary diagnosis flag."
+
+      - name: is_secondary_diagnosis
+        description: "Secondary diagnosis flag."

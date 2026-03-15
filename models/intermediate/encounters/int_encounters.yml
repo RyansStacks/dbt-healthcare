@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: int_encounters
+    description: "Conformed encounter entity representing inpatient, outpatient, ED, and observation encounters."
+    columns:
+      - name: encounter_sk
+        description: "Surrogate key for the encounter."
+        tests:
+          - not_null
+          - unique
+
+      - name: encounter_id
+        description: "Natural encounter identifier."
+        tests:
+          - not_null
+
+      - name: patient_id
+        description: "Identifier of the patient associated with the encounter."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('int_patients')
+              field: patient_id
+
+      - name: encounter_type
+        description: "Type of encounter (inpatient, outpatient, ED, etc.)."
+
+      - name: admit_datetime
+        description: "Admission timestamp."
+
+      - name: discharge_datetime
+        description: "Discharge timestamp."
+
+      - name: attending_provider_id
+        description: "Identifier of the attending provider."
+
+      - name: location
+        description: "Location of the encounter."
+
+      - name: department
+        description: "Department associated with the encounter."
+
+      - name: created_at
+        description: "Record creation timestamp."
+
+      - name: updated_at
+        description: "Record last update timestamp."

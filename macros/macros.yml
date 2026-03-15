@@ -1,0 +1,10 @@
+# macros
+version: 2
+
+macros:
+  - name: generate_surrogate_key
+    description: "Wrapper macro for generating surrogate keys using dbt_utils.surrogate_key."
+    arguments:
+      - name: columns
+        type: list
+        description: "List of column names to include in the surrogate key."

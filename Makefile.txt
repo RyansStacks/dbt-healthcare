@@ -1,0 +1,38 @@
+# ----------------------------------------
+# Healthcare dbt Project - Makefile
+# ----------------------------------------
+# This Makefile provides convenient shortcuts
+# for running dbt commands during development.
+# ----------------------------------------
+
+# Install Python dependencies (if using requirements.txt)
+install:
+    pip install -r requirements.txt
+
+# Install dbt packages
+deps:
+    dbt deps
+
+# Run all models, tests, and snapshots
+build:
+    dbt build
+
+# Run only models (no tests)
+run:
+    dbt run
+
+# Run only tests
+test:
+    dbt test
+
+# Generate and serve documentation
+docs:
+    dbt docs generate && dbt docs serve
+
+# Clean dbt artifacts
+clean:
+    rm -rf target logs dbt_packages
+
+# Debug profile connection
+debug:
+    dbt debug

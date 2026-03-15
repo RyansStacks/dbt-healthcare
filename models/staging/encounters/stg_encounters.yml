@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_encounters
+    description: "Staging model for encounter-level data sourced from the raw Cerner-style EHR system."
+    columns:
+
+      - name: encounter_sk
+        description: "Surrogate key generated from encounter_id."
+        tests:
+          - not_null
+          - unique
+
+      - name: encounter_id
+        description: "Natural key for the encounter record from the source system."
+        tests:
+          - not_null
+
+      - name: patient_id
+        description: "Foreign key linking the encounter to the patient."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_patients')
+              field: patient_id
+
+      - name: encounter_type
+        description: "Type of encounter (e.g., inpatient, outpatient, ED, observation)."
+
+      - name: admit_datetime
+        description: "Timestamp when the patient was admitted."
+
+      - name: discharge_datetime
+        description: "Timestamp when the patient was discharged."
+
+      - name: attending_provider_id
+        description: "Identifier for the attending provider overseeing the encounter."
+
+      - name: location
+        description: "Primary location or facility where the encounter occurred."
+
+      - name: department
+        description: "Department or unit associated with the encounter."
+
+      - name: visit_reason
+        description: "Reason for the visit as recorded in the EHR."
+
+      - name: created_at
+        description: "Timestamp when the encounter record was created in the source system."
+
+      - name: updated_at
+        description: "Timestamp when the encounter record was last updated in the source system."

@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: int_encounter_lab_tests
+    description: "Conformed encounter-level lab test orders."
+    columns:
+      - name: encounter_lab_test_sk
+        description: "Surrogate key for the lab test order."
+        tests:
+          - not_null
+          - unique
+
+      - name: encounter_lab_test_id
+        description: "Natural identifier for the lab test order."
+        tests:
+          - not_null
+
+      - name: encounter_id
+        description: "Encounter associated with the lab test order."
+
+      - name: patient_id
+        description: "Patient associated with the lab test order."
+
+      - name: lab_test_id
+        description: "Identifier for the lab test."
+
+      - name: order_datetime
+        description: "Timestamp when the test was ordered."
+
+      - name: result_datetime
+        description: "Timestamp when the result was finalized."
+
+      - name: status
+        description: "Status of the lab test."
+
+      - name: ordering_provider_id
+        description: "Provider who ordered the test."
+
+      - name: created_at
+        description: "Record creation timestamp."
+
+      - name: updated_at
+        description: "Record last update timestamp."

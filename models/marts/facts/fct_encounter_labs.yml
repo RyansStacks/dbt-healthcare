@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: fct_encounter_labs
+    description: "Wide encounter-lab fact table combining test orders and results."
+    columns:
+      - name: encounter_lab_bridge_sk
+        description: "Surrogate key for the encounter-lab relationship."
+        tests:
+          - not_null
+          - unique
+
+      - name: encounter_id
+        description: "Encounter identifier."
+
+      - name: patient_id
+        description: "Patient identifier."
+
+      - name: lab_test_id
+        description: "Lab test identifier."
+
+      - name: loinc_code
+        description: "LOINC code."
+
+      - name: result_value
+        description: "Result value."
+
+      - name: result_normalized
+        description: "Normalized result."
+
+      - name: is_abnormal
+        description: "Abnormal indicator."

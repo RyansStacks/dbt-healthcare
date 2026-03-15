@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: agg_lab_abnormal_rates
+    description: "Daily abnormal lab result rates by LOINC code."
+    columns:
+      - name: collected_date
+        description: "Date of collection."
+
+      - name: loinc_code
+        description: "LOINC code."
+
+      - name: test_name
+        description: "Lab test name."
+
+      - name: total_results
+        description: "Total number of results."
+
+      - name: abnormal_results
+        description: "Number of abnormal results."
+
+      - name: abnormal_rate
+        description: "Abnormal rate."

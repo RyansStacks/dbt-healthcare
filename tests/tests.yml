@@ -1,0 +1,9 @@
+# tests
+version: 2
+
+tests:
+  - name: unique_encounter_id
+    description: "Ensures encounter_id is unique in fct_encounters."
+
+  - name: valid_lab_results
+    description: "Ensures lab results have valid numeric values and units."

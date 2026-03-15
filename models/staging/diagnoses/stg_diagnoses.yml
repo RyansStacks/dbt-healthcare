@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: stg_diagnoses
+    description: "Staging model for diagnosis records sourced from the raw Cerner-style EHR system."
+    columns:
+
+      - name: diagnosis_sk
+        description: "Surrogate key generated from diagnosis_id."
+        tests:
+          - not_null
+          - unique
+
+      - name: diagnosis_id
+        description: "Natural key for the diagnosis record from the source system."
+        tests:
+          - not_null
+
+      - name: encounter_id
+        description: "Foreign key linking the diagnosis to the encounter."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_encounters')
+              field: encounter_id
+
+      - name: patient_id
+        description: "Foreign key linking the diagnosis to the patient."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_patients')
+              field: patient_id
+
+      - name: icd10_code
+        description: "ICD-10 diagnosis code assigned to the encounter."
+
+      - name: diagnosis_description
+        description: "Text description of the diagnosis."
+
+      - name: diagnosis_type
+        description: "Type of diagnosis (e.g., principal, secondary)."
+
+      - name: diagnosis_rank
+        description: "Rank or ordering of diagnoses for the encounter."
+
+      - name: recorded_datetime
+        description: "Timestamp when the diagnosis was recorded."
+
+      - name: created_at
+        description: "Timestamp when the diagnosis record was created in the source system."
+
+      - name: updated_at
+        description: "Timestamp when the diagnosis record was last updated in the source system."

@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg_patients
+    description: "Staging model for patient demographic data sourced from the raw Cerner-style EHR system."
+    columns:
+
+      - name: patient_sk
+        description: "Surrogate key generated from patient_id."
+        tests:
+          - not_null
+          - unique
+
+      - name: patient_id
+        description: "Natural key for the patient record from the source system."
+        tests:
+          - not_null
+
+      - name: medical_record_number
+        description: "MRN assigned to the patient by the health system."
+
+      - name: first_name
+        description: "Patient's first name."
+
+      - name: last_name
+        description: "Patient's last name."
+
+      - name: date_of_birth
+        description: "Patient's date of birth."
+
+      - name: sex
+        description: "Patient's sex as recorded in the EHR."
+
+      - name: address
+        description: "Street address of the patient."
+
+      - name: city
+        description: "City of residence."
+
+      - name: state
+        description: "State of residence."
+
+      - name: zip_code
+        description: "Postal ZIP code."
+
+      - name: phone_number
+        description: "Primary phone number."
+
+      - name: email
+        description: "Primary email address."
+
+      - name: created_at
+        description: "Timestamp when the patient record was created in the source system."
+
+      - name: updated_at
+        description: "Timestamp when the patient record was last updated in the source system."

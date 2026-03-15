@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_coveragesbridge
+    description: "Staging model for patient insurance coverage bridge records from the raw EHR system."
+    columns:
+
+      - name: coverage_bridge_sk
+        description: "Surrogate key generated from coverage_bridge_id."
+        tests:
+          - not_null
+          - unique
+
+      - name: coverage_bridge_id
+        description: "Natural key for the coverage bridge record."
+        tests:
+          - not_null
+
+      - name: patient_id
+        description: "Foreign key linking the coverage record to the patient."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_patients')
+              field: patient_id
+
+      - name: payor_id
+        description: "Foreign key linking the coverage to the payor."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_payors')
+              field: payor_id
+
+      - name: coverage_start_date
+        description: "Date when the insurance coverage became effective."
+
+      - name: coverage_end_date
+        description: "Date when the insurance coverage ended."
+
+      - name: coverage_status
+        description: "Status of the coverage (active, inactive, pending)."
+
+      - name: created_at
+        description: "Timestamp when the record was created in the source system."
+
+      - name: updated_at
+        description: "Timestamp when the record was last updated in the source system."

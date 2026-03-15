@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: int_visit_rollups
+    description: "Aggregated visit-level rollups by encounter and patient."
+    columns:
+      - name: encounter_id
+        description: "Encounter identifier."
+        tests:
+          - not_null
+
+      - name: patient_id
+        description: "Patient identifier."
+
+      - name: visit_count
+        description: "Number of visits associated with the encounter."
+
+      - name: first_visit_start
+        description: "Earliest visit start timestamp."
+
+      - name: last_visit_end
+        description: "Latest visit end timestamp."

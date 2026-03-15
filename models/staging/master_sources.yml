@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: ehr_raw
+    description: "Raw EHR source tables extracted from the MASTER.DBO schema."
+    schema: dbo
+    database: master
+
+    tables:
+
+      - name: patients
+        description: "Raw patient demographic and identity records."
+
+      - name: encounters
+        description: "Raw encounter-level records including inpatient, outpatient, ED, and observation visits."
+
+      - name: diagnoses
+        description: "Raw diagnosis records including ICD-10 codes and diagnosis metadata."
+
+      - name: lab_results
+        description: "Raw laboratory test result records including LOINC codes and result values."
+
+      - name: payors
+        description: "Raw insurance payor and plan information for patients and encounters."
+
+      - name: dates
+        description: "Raw enterprise date dimension table."
+
+      - name: visits
+        description: "Raw visit-level records representing sub-encounter visit segments."
+
+      - name: coveragesbridge
+        description: "Raw coverage bridge table linking patients to payors over time."
+
+      - name: encounter_lab_tests
+        description: "Raw encounter-level lab test order and result metadata."

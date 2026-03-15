@@ -1,0 +1,4 @@
+-- generate_surrogate_key
+{% macro generate_surrogate_key(columns) %}
+    {{ dbt_utils.surrogate_key(columns) }}
+{% endmacro %}

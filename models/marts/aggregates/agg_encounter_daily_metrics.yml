@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: agg_encounter_daily_metrics
+    description: "Daily encounter metrics including admits, discharges, and LOS."
+    columns:
+      - name: metric_date
+        description: "Date of metric."
+
+      - name: encounters_started
+        description: "Number of encounters started."
+
+      - name: encounters_discharged
+        description: "Number of encounters discharged."
+
+      - name: avg_los_for_admits
+        description: "Average LOS for admitted encounters."

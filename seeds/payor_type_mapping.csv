@@ -1,0 +1,6 @@
+"payor_id,payor_type",Category
+1,Commercial
+2,Medicare
+3,Medicaid
+4,Self-Pay
+5,Other

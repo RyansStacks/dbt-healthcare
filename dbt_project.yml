@@ -1,0 +1,21 @@
+name: 'healthcare_dbt'
+version: '1.0.0'
+config-version: 2
+
+profile: 'healthcare_dbt'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+test-paths: ["tests"]
+docs-paths: ["docs"]
+
+models:
+  healthcare_dbt:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table

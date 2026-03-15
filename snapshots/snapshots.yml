@@ -1,0 +1,11 @@
+# snapshots
+version: 2
+
+snapshots:
+  - name: patients_snapshot
+    description: "Type-2 snapshot tracking changes to patient demographic attributes over time."
+    columns:
+      - name: patient_id
+        description: "Natural patient identifier."
+        tests:
+          - not_null

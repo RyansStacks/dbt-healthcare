@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: int_diagnoses
+    description: "Conformed diagnosis entity with ICD coding and encounter linkage."
+    columns:
+      - name: diagnosis_sk
+        description: "Surrogate key for the diagnosis."
+        tests:
+          - not_null
+          - unique
+
+      - name: diagnosis_id
+        description: "Natural diagnosis identifier."
+        tests:
+          - not_null
+
+      - name: encounter_id
+        description: "Encounter associated with the diagnosis."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('int_encounters')
+              field: encounter_id
+
+      - name: patient_id
+        description: "Patient associated with the diagnosis."
+
+      - name: icd_code
+        description: "ICD-10 diagnosis code."
+
+      - name: diagnosis_description
+        description: "Description of the diagnosis."
+
+      - name: diagnosis_type
+        description: "Type of diagnosis (primary, secondary, etc.)."
+
+      - name: created_at
+        description: "Record creation timestamp."
+
+      - name: updated_at
+        description: "Record last update timestamp."

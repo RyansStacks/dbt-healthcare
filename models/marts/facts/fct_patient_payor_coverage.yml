@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: fct_patient_payor_coverage
+    description: "Patient-payor coverage fact table with eligibility logic."
+    columns:
+      - name: patient_payor_coverage_sk
+        description: "Surrogate key for the patient-payor coverage record."
+        tests:
+          - not_null
+          - unique
+
+      - name: patient_id
+        description: "Patient identifier."
+
+      - name: payor_id
+        description: "Payor identifier."
+
+      - name: coverage_start_date
+        description: "Coverage start date."
+
+      - name: coverage_end_date
+        description: "Coverage end date."
+
+      - name: is_currently_covered
+        description: "Current coverage indicator."

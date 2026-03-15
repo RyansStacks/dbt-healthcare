@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: int_patients
+    description: "Conformed patient entity with standardized demographic attributes."
+    columns:
+      - name: patient_sk
+        description: "Surrogate key for the patient."
+        tests:
+          - not_null
+          - unique
+
+      - name: patient_id
+        description: "Natural patient identifier from the source system."
+        tests:
+          - not_null
+
+      - name: first_name
+        description: "Patient first name."
+
+      - name: last_name
+        description: "Patient last name."
+
+      - name: date_of_birth
+        description: "Patient date of birth."
+
+      - name: gender
+        description: "Patient gender."
+
+      - name: race
+        description: "Patient race."
+
+      - name: ethnicity
+        description: "Patient ethnicity."
+
+      - name: address
+        description: "Street address."
+
+      - name: city
+        description: "City of residence."
+
+      - name: state
+        description: "State of residence."
+
+      - name: zip_code
+        description: "ZIP code."
+
+      - name: phone_number
+        description: "Primary phone number."
+
+      - name: email
+        description: "Primary email address."
+
+      - name: created_at
+        description: "Record creation timestamp."
+
+      - name: updated_at
+        description: "Record last update timestamp."

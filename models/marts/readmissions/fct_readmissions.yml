@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: fct_readmissions
+    description: "Readmission fact table with 30-day readmission logic."
+    columns:
+      - name: readmission_sk
+        description: "Surrogate key for the readmission record."
+        tests:
+          - not_null
+          - unique
+
+      - name: patient_id
+        description: "Patient identifier."
+
+      - name: index_encounter_id
+        description: "Index encounter identifier."
+
+      - name: readmission_encounter_id
+        description: "Readmission encounter identifier."
+
+      - name: is_30_day_readmission
+        description: "30-day readmission indicator."

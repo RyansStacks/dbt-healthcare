@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: int_patient_payor_bridge
+    description: "Bridge table linking patients to payors with effective coverage periods."
+    columns:
+      - name: patient_payor_bridge_sk
+        description: "Surrogate key for the patient-payor relationship."
+        tests:
+          - not_null
+          - unique
+
+      - name: patient_id
+        description: "Patient identifier."
+
+      - name: payor_id
+        description: "Payor identifier."
+
+      - name: coverage_start_date
+        description: "Coverage start date."
+
+      - name: coverage_end_date
+        description: "Coverage end date."

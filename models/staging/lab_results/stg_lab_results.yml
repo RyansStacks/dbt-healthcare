@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: stg_lab_results
+    description: "Staging model for laboratory test results sourced from the raw Cerner-style EHR system."
+    columns:
+
+      - name: lab_result_sk
+        description: "Surrogate key generated from lab_result_id."
+        tests:
+          - not_null
+          - unique
+
+      - name: lab_result_id
+        description: "Natural key for the lab result record from the source system."
+        tests:
+          - not_null
+
+      - name: patient_id
+        description: "Foreign key linking the lab result to the patient."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_patients')
+              field: patient_id
+
+      - name: encounter_id
+        description: "Foreign key linking the lab result to the encounter."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_encounters')
+              field: encounter_id
+
+      - name: loinc_code
+        description: "LOINC code representing the laboratory test."
+
+      - name: test_name
+        description: "Human-readable name of the laboratory test."
+
+      - name: result_value
+        description: "Numeric or text value of the test result."
+
+      - name: result_unit
+        description: "Unit of measurement for the test result."
+
+      - name: reference_range_low
+        description: "Lower bound of the normal reference range."
+
+      - name: reference_range_high
+        description: "Upper bound of the normal reference range."
+
+      - name: abnormal_flag
+        description: "Indicator showing whether the result is abnormal."
+
+      - name: collected_datetime
+        description: "Timestamp when the specimen was collected."
+
+      - name: resulted_datetime
+        description: "Timestamp when the result was finalized."
+
+      - name: created_at
+        description: "Timestamp when the lab result record was created in the source system."
+
+      - name: updated_at
+        description: "Timestamp when the lab result record was last updated in the source system."

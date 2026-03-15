@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: stg_encounter_lab_tests
+    description: "Staging model for encounter-level lab test orders and results from the raw EHR system."
+    columns:
+
+      - name: encounter_lab_test_sk
+        description: "Surrogate key generated from encounter_lab_test_id."
+        tests:
+          - not_null
+          - unique
+
+      - name: encounter_lab_test_id
+        description: "Natural key for the encounter lab test record."
+        tests:
+          - not_null
+
+      - name: encounter_id
+        description: "Foreign key linking the lab test to the encounter."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_encounters')
+              field: encounter_id
+
+      - name: patient_id
+        description: "Foreign key linking the lab test to the patient."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_patients')
+              field: patient_id
+
+      - name: lab_test_id
+        description: "Identifier for the specific lab test ordered."
+
+      - name: order_datetime
+        description: "Timestamp when the lab test was ordered."
+
+      - name: result_datetime
+        description: "Timestamp when the lab test result was finalized."
+
+      - name: status
+        description: "Status of the lab test (e.g., ordered, resulted, canceled)."
+
+      - name: ordering_provider_id
+        description: "Identifier for the provider who ordered the test."
+
+      - name: created_at
+        description: "Timestamp when the record was created in the source system."
+
+      - name: updated_at
+        description: "Timestamp when the record was last updated in the source system."

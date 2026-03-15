@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: fct_encounters
+    description: "Wide encounter fact table with timelines, diagnosis flags, lab flags, and visit rollups."
+    columns:
+      - name: encounter_sk
+        description: "Surrogate key for the encounter."
+        tests:
+          - not_null
+          - unique
+
+      - name: encounter_id
+        description: "Natural encounter identifier."
+
+      - name: patient_id
+        description: "Patient identifier."
+
+      - name: encounter_type
+        description: "Encounter type."
+
+      - name: admit_datetime
+        description: "Admission timestamp."
+
+      - name: discharge_datetime
+        description: "Discharge timestamp."
+
+      - name: length_of_stay_hours
+        description: "Length of stay in hours."
+
+      - name: length_of_stay_days
+        description: "Length of stay in days."
+
+      - name: visit_count
+        description: "Number of visits in encounter."
+
+      - name: has_primary_diagnosis
+        description: "Primary diagnosis flag."
+
+      - name: diagnosis_count
+        description: "Number of diagnoses."
+
+      - name: lab_result_count
+        description: "Number of lab results."
+
+      - name: has_abnormal_lab
+        description: "Abnormal lab flag."

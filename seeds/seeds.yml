@@ -1,0 +1,16 @@
+# seeds
+version: 2
+
+seeds:
+  - name: payor_type_mapping
+    description: "Mapping table for payor types used in marts and intermediate models."
+    columns:
+      - name: payor_id
+        description: "Payor identifier."
+        tests:
+          - not_null
+
+      - name: payor_type
+        description: "High-level payor category."
+        tests:
+          - not_null

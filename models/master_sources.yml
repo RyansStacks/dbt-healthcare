@@ -1,0 +1,92 @@
+version: 2
+
+sources:
+
+  - name: ehr_raw
+    schema: raw_ehr
+    database: healthcare
+    description: "Raw Cerner-style EHR source tables ingested from the clinical data warehouse."
+
+    tables:
+
+      - name: patients
+        description: "Raw patient demographic records including MRN, name, DOB, sex, and address."
+        columns:
+          - name: patient_id
+            description: "Unique identifier for each patient."
+            tests:
+              - not_null
+              - unique
+
+      - name: encounters
+        description: "Encounter-level records including inpatient, outpatient, ED, and observation visits."
+        columns:
+          - name: encounter_id
+            description: "Unique identifier for each encounter."
+            tests:
+              - not_null
+              - unique
+          - name: patient_id
+            description: "Foreign key to patients."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('ehr_raw', 'patients')
+                  field: patient_id
+
+      - name: diagnoses
+        description: "Diagnosis codes (ICD-10) assigned to encounters."
+        columns:
+          - name: diagnosis_id
+            description: "Unique identifier for each diagnosis record."
+            tests:
+              - not_null
+              - unique
+          - name: encounter_id
+            description: "Foreign key to encounters."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('ehr_raw', 'encounters')
+                  field: encounter_id
+
+      - name: lab_results
+        description: "Laboratory test results including LOINC codes, values, units, and reference ranges."
+        columns:
+          - name: lab_result_id
+            description: "Unique identifier for each lab result."
+            tests:
+              - not_null
+              - unique
+          - name: patient_id
+            description: "Foreign key to patients."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('ehr_raw', 'patients')
+                  field: patient_id
+
+      - name: payors
+        description: "Insurance and payor information for encounters."
+        columns:
+          - name: payor_id
+            description: "Unique identifier for each payor record."
+            tests:
+              - not_null
+              - unique
+          - name: encounter_id
+            description: "Foreign key to encounters."
+            tests:
+              - not_null
+              - relationships:
+                  to: source('ehr_raw', 'encounters')
+                  field: encounter_id
+
+      - name: dates
+        description: "Date dimension table used for analytics and time-based modeling."
+        columns:
+          - name: date_day
+            description: "Calendar date."
+            tests:
+              - not_null
+              - unique

@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: int_coveragesbridge
+    description: "Conformed coverage bridge entity linking patients to payors over time."
+    columns:
+      - name: coverage_bridge_sk
+        description: "Surrogate key for the coverage bridge."
+        tests:
+          - not_null
+          - unique
+
+      - name: coverage_bridge_id
+        description: "Natural identifier for the coverage bridge."
+        tests:
+          - not_null
+
+      - name: patient_id
+        description: "Patient identifier."
+
+      - name: payor_id
+        description: "Payor identifier."
+
+      - name: coverage_start_date
+        description: "Coverage start date."
+
+      - name: coverage_end_date
+        description: "Coverage end date."
+
+      - name: coverage_status
+        description: "Status of the coverage."
+
+      - name: created_at
+        description: "Record creation timestamp."
+
+      - name: updated_at
+        description: "Record last update timestamp."
